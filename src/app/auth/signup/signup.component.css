@@ -1,0 +1,22 @@
+.signup-card {
+  width: 350px;
+  margin: 10vh auto;
+}
+mat-form-field {
+  width: 300px;
+}
+mat-card-title {
+  font-style: italic;
+  font-weight: 900;
+  font-size: 50px !important;
+}
+
+@media(max-width: 600px) {
+  .signup-card {
+    width: initial;
+    margin: 10vh 16px;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+}

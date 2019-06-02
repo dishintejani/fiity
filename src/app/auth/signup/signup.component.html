@@ -1,0 +1,53 @@
+
+<mat-card class="signup-card">
+    <mat-card-header fxLayoutAlign="center center">
+        <mat-card-title>Fitify</mat-card-title>
+        <mat-card-subtitle fxLayoutAlign="center center">Signp</mat-card-subtitle>
+    </mat-card-header>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field appearance="outline">
+            <mat-label>Your Email</mat-label>
+            <input
+                matInput
+                type="email"
+                ngModel
+                name="email"
+                email
+                required
+                #emailInput="ngModel"
+            >
+            <mat-error *ngIf="!emailInput.hasError('required')">Email is Invalid</mat-error>
+            <mat-error *ngIf="emailInput.hasError('required')">Feild must not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" hintLabel="Should be atleast 6 characters long">
+            <mat-label>Your Password</mat-label>
+            <input
+                matInput
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                #pwInput="ngModel"
+            >
+            <mat-hint align="end">{{pwInput.value?.length}} / 6</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="Your Birthdate"
+                [max]="maxDate"
+                required
+                ngModel
+                name="birthday"
+            >
+            <mat-error>You must be 18 years old to use this app</mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-checkbox  name="agree" required ngModel color="primary">Agree Terms and Condition</mat-checkbox>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    </form>
+</mat-card>
+
